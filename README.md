@@ -13,10 +13,11 @@ Instalar ambiente desde cero (desde consola de VSCode):
 >npm init
 >npx tsc --init --rootDir src --outDir build --lib dom,es6 --module commonjs --removeComments --target es6
 
-Instalar Dependencias de produccion:
+Instalar dependencias de produccion:
 >npm install express express-graphql graphql ncp http graphql-import-node compression cors typescript graphql-tools graphql-playground-middleware-express
-Dependencias de desarrollo:
+
+Instalar dependencias de desarrollo:
 >npm install @types/compression @types/express @types/cors @types/express-graphql @types/node @types/graphql -D
-Para evitar problemas con dependencias de graphql 15.X:
-Para evitar problemas de compilacion(usar slash [\]):
-"build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" src/server.ts -e ts,graphql"
+
+Para evitar problemas de compilacion (usar slash [\]):
+>"build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" src/server.ts -e ts,graphql"
