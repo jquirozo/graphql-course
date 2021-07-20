@@ -21,3 +21,6 @@ Instalar dependencias de desarrollo:
 
 Para evitar problemas de compilacion (usar slash [\]):
 >"build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" src/server.ts -e ts,graphql"
+
+La version 3 actual de Apollo Server requiere un pequeño cambio en la definicion, la cual se encuentra aqui:
+https://www.apollographql.com/docs/apollo-server/migration/
