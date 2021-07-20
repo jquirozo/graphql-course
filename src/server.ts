@@ -1,22 +1,30 @@
 import express from "express";
 import compression from "compression";
 import cors from "cors";
-import { graphqlHTTP } from "express-graphql";
 import schema from './schema'
-const app = express();
+import { ApolloServer } from 'apollo-server-express';
+import { createServer } from "http";
+import { execute, subscribe } from "graphql";
+import { SubscriptionServer } from "subscriptions-transport-ws";
 
-app.use(cors());
-
-app.use(compression());
-
-app.use('/', graphqlHTTP({
-    schema,
-    graphiql: true
-}));
-
-const PORT = 5300;
-
-app.listen(
-    {port: PORT},
-    () => console.log(`Hola Mundo API GRaphQL http://localhost:${PORT}`)
-);
+(async function () {
+    const app = express();
+    app.use(cors());
+    const httpServer = createServer(app);
+  
+    const server = new ApolloServer({
+      schema,
+    });
+    await server.start();
+    server.applyMiddleware({ app });
+  
+    SubscriptionServer.create(
+      { schema, execute, subscribe },
+      { server: httpServer, path: server.graphqlPath }
+    );
+  
+    const PORT = 5300;
+    httpServer.listen(PORT, () =>
+      console.log(`Server is now running on http://localhost:${PORT}/graphql`)
+    );
+  })();
