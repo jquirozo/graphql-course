@@ -22,5 +22,13 @@ Instalar dependencias de desarrollo:
 Para evitar problemas de compilacion (usar slash [\]):
 >"build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" src/server.ts -e ts,graphql"
 
-La version 3 actual de Apollo Server requiere un pequeño cambio en la definicion, la cual se encuentra aqui:
+Instalar version 3 actual de Apollo Server, la cual requiere un pequeño cambio en la definicion, la cual se encuentra aqui:
 https://www.apollographql.com/docs/apollo-server/migration/
+> npm install apollo-server-express
+
+Instalar lodash
+> npm install lodash
+> npm install @types/lodash -D
+
+Fix para leer JSON:
+https://mariusschulz.com/blog/importing-json-modules-in-typescript
